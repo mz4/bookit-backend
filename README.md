@@ -1,3 +1,3 @@
 ##npm install
 ##npm run start
-### https://apollo-graphql-todo.glitch.me/graphql  See how it works
+### https://mz4-bookit-backend.glitch.me/graphql See how it works
