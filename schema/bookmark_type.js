@@ -7,8 +7,8 @@ const {
   GraphQLString
 } = graphql;
 
-const TodoType = new GraphQLObjectType({
-  name:  'TodoType',
+const BookmarkType = new GraphQLObjectType({
+  name:  'BookmarkType',
   fields: () => ({
     id: {
       type: GraphQLID
@@ -22,4 +22,4 @@ const TodoType = new GraphQLObjectType({
   })
 });
 
-module.exports = TodoType;
+module.exports = BookmarkType;

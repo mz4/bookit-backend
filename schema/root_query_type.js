@@ -6,27 +6,27 @@ const {
   GraphQLID,
   GraphQLNonNull
 } = graphql;
-const Todo = mongoose.model('todo');
-const TodoType = require('./todo_type');
+const Bookmark = mongoose.model('bookmark');
+const BookmarkType = require('./bookmark_type');
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQuery',
   fields: () => ({
-    todos: {
-      type: new GraphQLList(TodoType),
+    bookmarks: {
+      type: new GraphQLList(BookmarkType),
       resolve() {
-        return Todo.find({});
+        return Bookmark.find({});
       }
     },
-    todo: {
-      type: TodoType,
+    bookmark: {
+      type: BookmarkType,
       args: {
         id: {
           type: new GraphQLNonNull(GraphQLID)
         }
       },
       resolve(parentValue, { id }) { 
-        return Todo.findById(id);
+        return Bookmark.findById(id);
       }
     }
   })

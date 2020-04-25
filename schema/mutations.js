@@ -1,47 +1,47 @@
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
 const mongoose = require('mongoose');
-const Todo = mongoose.model('todo');
-const TodoType = require('./todo_type');
+const Bookmark = mongoose.model('bookmark');
+const BookmarkType = require('./bookmark_type');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addTodo: {
-      type: TodoType,
+    addBookmark: {
+      type: BookmarkType,
       args: {
         content: { 
           type: GraphQLString
         }
       },
       resolve(parentValue, { content }) { 
-        return (new Todo({ content })).save()
+        return (new Bookmark({ content })).save()
       }
     },
-    likeTodo: {
-      type: TodoType,
+    likeBookmark: {
+      type: BookmarkType,
       args: { 
         id: { 
           type: GraphQLID
         }
       },
       resolve(parentValue, { id }) {
-        return Todo.like(id);
+        return Bookmark.like(id);
       }
     },
-    deleteTodo: {
-      type: TodoType,
+    deleteBookmark: {
+      type: BookmarkType,
       args: {
         id: {
           type: GraphQLID
         }
       },
       resolve(parentValue, { id }) {
-        return Todo.remove({ _id: id });
+        return Bookmark.remove({ _id: id });
       }
     },
-    updateTodo: {
-      type: TodoType,
+    updateBookmark: {
+      type: BookmarkType,
       args: {
         id: {
           type: GraphQLID
@@ -51,7 +51,7 @@ const mutation = new GraphQLObjectType({
         }
       },
       resolve(parentValue, { id, content }) {
-        return Todo.update({ _id: id }, { content });
+        return Bookmark.update({ _id: id }, { content });
       }
     },
   }
