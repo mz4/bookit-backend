@@ -7,8 +7,6 @@ const schema = require('./schema');
 const cors = require('cors')
 const app = express();
 app.use(cors())
-// Replace with your mongoLab URI
-// const MONGO_URI = 'mongodb://admin:password1@ds247101.mlab.com:47101/todos-apollo-graphql';
 const MONGO_URI = 'mongodb+srv://mat123:ciao123@clustera-wovoo.mongodb.net/test?retryWrites=true&w=majority'
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
